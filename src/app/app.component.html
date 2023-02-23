@@ -1,15 +1,27 @@
 <div class="container mt-4">
-  <h3 class="h3">{{title}}</h3>
-  <div class="card">
-
-    <div class="card-body">
-      <h3 class="card-title">
-        Card Head
-      </h3>
-      <p class="card-text">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, necessitatibus sed! Similique at modi cumque laudantium, recusandae nihil sed vel ut aliquid hic quis illum voluptatum praesentium quibusdam, dolor rerum.
-      </p>
+  <div class="row">
+    <div class="col-mx-12">
+      <button class="btn btn-primary" (click)="onlyOdd = !onlyOdd">Only show odd numbers</button>
+      <ul class="list-group">
+        <div *ngIf="onlyOdd">
+          <li class="list-group-item"
+              [ngClass]="{odd: odd % 2 !== 0}"
+              [ngStyle]="{backgroundColor: odd % 2 !== 0 ? 'yellow' : 'transparent'}"
+              *ngFor="let odd of oddNumbers">
+            {{odd}}
+          </li>
+        </div>
+        <div *ngIf="!onlyOdd">
+          <li class="list-group-item"
+              [ngClass]="{even: even % 2 == 0}"
+              [ngStyle]="{backgroundColor: even % 2 == 0 ? 'blue' : 'transparent'}"
+              *ngFor="let even of evenNumbers">
+            {{even}}
+          </li>
+        </div>
+      </ul>
     </div>
+    <p appBasicHightlight>Test Hightlight</p>
+    <p appBetterHighlight="green">Test Hightlight</p>
   </div>
-  <app-servers></app-servers>
 </div>
